@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Javascript Newline Calculator</title>
+  <meta name="description" content="JS Calculator for newline seperated values">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    textarea#js-input {
+      width: 300px;
+      height: 320px;
+      border: 1px solid #333;
+      padding: 5px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    button#submit {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+    }
+    .result p {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="wrapper">
+          <textarea id="js-input" height="20"></textarea>
+          <button id="submit">Calculate</button>
+          <div class="result"><p><span id="js-output"></span></p></div>
+        </div>
+
+        <script src="app.js"></script>
+      </body>
+</html>
