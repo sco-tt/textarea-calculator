@@ -1,39 +1,43 @@
 /*jshint latedef: nofunc */
-var app = (function(window, document, undefined){
+(function(window, document, undefined){
   'use strict';
-  
-  // Values from form
-  var storedArr = [];
-  //Cache DOM
-  var button = document.getElementById('submit');
-  var output = document.getElementById('js-output');
-  var input = document.getElementById('js-input');
-  // Bind Events
-  button.addEventListener('click', processInput, false);
+  var app = {
+    init: function() {
+      this.cacheDom();
+      this.bind();
+      //this.processInput();
+    }, 
 
-  function processInput() {
-    var lines = input.value;
-    storedArr = lines.split('\n');
-    compute();
-  }
+    cacheDom: function() {
+      this.button = document.getElementById('submit');
+      this.output = document.getElementById('js-output');
+      this.input = document.getElementById('js-input');
+    }, 
 
-  function compute(numbers) {
-    var arr = (numbers) ? numbers : storedArr;
-     var total = 0;
-     for (var i = 0, len = arr.length; i < len; i++) {
-      total += Number(arr[i]);
+    bind: function() {
+      this.button.addEventListener('click', this.processInput.bind(this), false);
+    },
+
+    processInput: function() {
+      this.lines = this.input.value;
+      this.storedArr = this.lines.split('\n');
+      this.compute();
+    }, 
+    compute: function(numbers) {
+     this.arr = (numbers) ? numbers : this.storedArr;
+     this.total = 0;
+     for (var i = 0, len = this.arr.length; i < len; i++) {
+      this.total += Number(this.arr[i]);
     }
-    var outVal = Math.round((total + 0.00001) * 100) / 100;
-    return outVal;
-  }
-  
-  function render(outVal) {
-    output.innerHTML = compute();
-  }
+    this.outVal = Math.round((this.total + 0.00001) * 100) / 100;
+    this.render();
+  },
 
-  return {
-    compute: compute
-  };
+  render: function() {
+    this.output.innerHTML = this.outVal;
+  },
+
+};
+app.init();
 
 })(window, document, undefined);
-
